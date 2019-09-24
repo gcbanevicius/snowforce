@@ -1,6 +1,8 @@
 /**
  This class can be used for integration testing with Snowflake
- Currently, it is based on the article linked from the README. TODO: Replace with tables from the Snowflake demo databases. 
+ Currently, it is based on the article linked from the README. TODO: Replace with tables from the Snowflake demo databases.
+ To execute, open the "Execute Anonymous" window from developer tools, and run:
+ SnowflakeIntegrationTests_DO_NOT_PACKAGE.testSnowflakeSync();
 **/
 public with sharing class SnowflakeIntegrationTests_DO_NOT_PACKAGE {
     static String endpoint='https://your_snowflake_instance.ap-southeast-2.snowflakecomputing.com';
