@@ -36,10 +36,10 @@ public with sharing class SnowflakeSchemaResponse {
 		public String schema {get;set;} 
 		public String table {get;set;} 
 		public String type_Z {get;set;} // in json: type
-		public Object scale {get;set;} 
+		public String scale {get;set;}
 		public Integer byteLength {get;set;} 
 		public Boolean nullable {get;set;} 
-		public Object precision {get;set;} 
+		public String precision {get;set;}
 		public Integer length {get;set;} 
 
 		public Rowtype(JSONParser parser) {
@@ -58,13 +58,13 @@ public with sharing class SnowflakeSchemaResponse {
 						} else if (text == 'type') {
 							type_Z = parser.getText();
 						} else if (text == 'scale') {
-							//scale = parser.readValueAs(Object.class);
+							scale = parser.getText();
 						} else if (text == 'byteLength') {
 							byteLength = parser.getIntegerValue();
 						} else if (text == 'nullable') {
 							nullable = parser.getBooleanValue();
 						} else if (text == 'precision') {
-							//precision = parser.readValueAs(Object.class);
+							precision = parser.getText();
 						} else if (text == 'length') {
 							length = parser.getIntegerValue();
 						} else {
@@ -84,9 +84,9 @@ public with sharing class SnowflakeSchemaResponse {
 		public Integer total {get;set;} 
 		public Integer returned {get;set;} 
 		public String queryId {get;set;} 
-		public Object databaseProvider {get;set;} 
-		public Object finalDatabaseName {get;set;} 
-		public Object finalSchemaName {get;set;} 
+		public String databaseProvider {get;set;}
+		public String finalDatabaseName {get;set;}
+		public String finalSchemaName {get;set;}
 		public String finalWarehouseName {get;set;} 
 		public String finalRoleName {get;set;} 
 		public Integer numberOfBinds {get;set;} 
@@ -113,11 +113,11 @@ public with sharing class SnowflakeSchemaResponse {
 						} else if (text == 'queryId') {
 							queryId = parser.getText();
 						} else if (text == 'databaseProvider') {
-							databaseProvider = parser.readValueAs(Object.class);
+							databaseProvider = parser.getText();
 						} else if (text == 'finalDatabaseName') {
-							finalDatabaseName = parser.readValueAs(Object.class);
+							finalDatabaseName = parser.getText();
 						} else if (text == 'finalSchemaName') {
-							finalSchemaName = parser.readValueAs(Object.class);
+							finalSchemaName = parser.getText();
 						} else if (text == 'finalWarehouseName') {
 							finalWarehouseName = parser.getText();
 						} else if (text == 'finalRoleName') {
@@ -143,8 +143,8 @@ public with sharing class SnowflakeSchemaResponse {
 	}
 	
 	public Data data {get;set;} 
-	public Object message {get;set;} 
-	public Object code {get;set;} 
+	public String message {get;set;}
+	public String code {get;set;}
 	public Boolean success {get;set;} 
 
 	public SnowflakeSchemaResponse(JSONParser parser) {
@@ -155,9 +155,9 @@ public with sharing class SnowflakeSchemaResponse {
 					if (text == 'data') {
 						data = new Data(parser);
 					} else if (text == 'message') {
-						message = parser.readValueAs(Object.class);
+						message = parser.getText();
 					} else if (text == 'code') {
-						code = parser.readValueAs(Object.class);
+						code = parser.getText();
 					} else if (text == 'success') {
 						success = parser.getBooleanValue();
 					} else {
